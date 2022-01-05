@@ -1,0 +1,97 @@
+import Vue from "vue";
+
+import "vant/lib/index.css";
+import {
+  Lazyload,
+  Form,
+  Button,
+  Tabbar,
+  TabbarItem,
+  Swipe,
+  SwipeItem,
+  Grid,
+  GridItem,
+  NavBar,
+  TreeSelect,
+  Image,
+  Tag,
+  Search,
+  Field,
+  Switch,
+  Uploader,
+  DatetimePicker,
+  Popup,
+  Cell,
+  CellGroup,
+  Toast,
+  Tab,
+  Tabs,
+  RadioGroup,
+  Radio,
+  CheckboxGroup,
+  Checkbox,
+  List,
+  Empty,
+  DropdownMenu,
+  DropdownItem,
+  Icon,
+  Dialog,
+  Area,
+  ActionSheet,
+  Picker,
+  Loading,
+  ImagePreview,
+  Skeleton,
+  Calendar,
+  Cascader,
+  stepper,
+  Badge,
+  Step,
+  Steps
+} from "vant";
+Vue.use(Icon);
+Vue.use(DropdownMenu);
+Vue.use(DropdownItem);
+Vue.use(Empty);
+Vue.use(Lazyload);
+Vue.use(Form);
+Vue.use(Button);
+Vue.use(Tabbar);
+Vue.use(TabbarItem);
+Vue.use(Swipe);
+Vue.use(SwipeItem);
+Vue.use(Grid);
+Vue.use(GridItem);
+Vue.use(NavBar);
+Vue.use(TreeSelect);
+Vue.use(Image);
+Vue.use(Tag);
+Vue.use(Search);
+Vue.use(Field);
+Vue.use(Switch);
+Vue.use(Uploader);
+Vue.use(DatetimePicker);
+Vue.use(Popup);
+Vue.use(Cell);
+Vue.use(CellGroup);
+Vue.use(Toast);
+Vue.use(Tab);
+Vue.use(Tabs);
+Vue.use(RadioGroup);
+Vue.use(Radio);
+Vue.use(CheckboxGroup);
+Vue.use(Checkbox);
+Vue.use(List);
+Vue.use(Dialog);
+Vue.use(Area);
+Vue.use(ActionSheet);
+Vue.use(Picker);
+Vue.use(Loading);
+Vue.use(ImagePreview);
+Vue.use(Skeleton);
+Vue.use(Calendar);
+Vue.use(Cascader);
+Vue.use(stepper);
+Vue.use(Badge);
+Vue.use(Step);
+Vue.use(Steps);

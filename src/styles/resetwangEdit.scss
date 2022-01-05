@@ -1,0 +1,23 @@
+/deep/ #wangeditor {
+  ol {
+    list-style: list-item !important;
+    li {
+      list-style: decimal;
+    }
+  }
+  ul {
+    list-style: initial !important;
+  }
+  i {
+    font-style: italic !important;
+  }
+  table,
+  th,
+  td {
+    border: 1px solid black;
+  }
+  th {
+    text-align: center;
+    background-color: #f1f1f1;
+  }
+}
