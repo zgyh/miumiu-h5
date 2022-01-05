@@ -1,8 +1,6 @@
 <template>
-  <div class="index">
-    <div class="main">
-      <router-view />
-    </div>
+  <div class="layout-wrap">
+    <router-view />
   </div>
 </template>
 
@@ -15,10 +13,10 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-.index {
+.layout-wrap {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
   overflow: hidden;
   .main {
     position: relative;
