@@ -17,12 +17,5 @@ export default {
   display: flex;
   flex-direction: column;
   height: 100vh;
-  overflow: hidden;
-  .main {
-    position: relative;
-    flex: 1;
-    overflow-x: hidden;
-    overflow-y: scroll;
-  }
 }
 </style>

@@ -3,6 +3,8 @@ import VueRouter from "vue-router";
 
 import AppLayout from "../layouts/AppLayout";
 import Home from "../views/Home";
+import FragranceResult from "../views/FragranceResult";
+
 const VueRouterPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function (to) {
   return VueRouterPush.call(this, to).catch(err => err);
@@ -27,6 +29,14 @@ const routes = [
           requiresAuth: false,
           title: "首页",
           index: 0
+        }
+      },
+      {
+        path: "fragrance-result",
+        name: "FragranceResult",
+        component: FragranceResult,
+        meta: {
+          title: ""
         }
       }
     ]

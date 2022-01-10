@@ -17,7 +17,8 @@ export default {
       //页面切换动画
       const toIndex = to.meta.index;
       const fromIndex = from.meta.index;
-      console.log(toIndex, fromIndex);
+      // console.log(toIndex, fromIndex);
+      // console.log(to);
       this.transitionName = toIndex < fromIndex ? "slide-right" : "slide-left";
     }
   }
