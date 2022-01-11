@@ -4,7 +4,7 @@ import VueRouter from "vue-router";
 import AppLayout from "../layouts/AppLayout";
 import Home from "../views/Home";
 import FragranceResult from "../views/FragranceResult";
-
+import Dress from "../views/Dress";
 const VueRouterPush = VueRouter.prototype.push;
 VueRouter.prototype.push = function (to) {
   return VueRouterPush.call(this, to).catch(err => err);
@@ -35,6 +35,14 @@ const routes = [
         path: "fragrance-result",
         name: "FragranceResult",
         component: FragranceResult,
+        meta: {
+          title: ""
+        }
+      },
+      {
+        path: "dress",
+        name: "Dress",
+        component: Dress,
         meta: {
           title: ""
         }

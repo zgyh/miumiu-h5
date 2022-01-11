@@ -128,14 +128,42 @@ export default {
         }
       ],
       selectedArr1: [],
-      selectedArr2: []
+      selectedArr2: [],
+      commodity: {
+        yunxiao: {
+          bg: "miumiu-yunxiao.png",
+          fullName: "缪缪霓裳云霄女士香水",
+          name: "霓裳云霄",
+          id: 0
+        },
+        chonger: {
+          bg: "miumiu-chonger.png",
+          fullName: "缪缪霓裳宠儿女士香水",
+          name: "霓裳宠儿",
+          id: 1
+        },
+        wantong: {
+          bg: "miumiu-wantong.png",
+          fullName: "缪缪霓裳玩童女士香水",
+          name: "霓裳玩童",
+          id: 2
+        },
+        tianjiao: {
+          bg: "miumiu-tianjiao.png",
+          fullName: "缪缪霓天骄女士香水",
+          name: "霓裳天骄",
+          id: 3
+        }
+      }
     };
   },
   methods: {
     nextPage() {
-      console.log(this.suanfa());
+      const key = this.getCommdity();
+      console.log(key);
       if (this.selectedArr1.length === 2 && this.selectedArr2.length === 2) {
-        // this.$router.push("fragrance-result");
+        this.$store.commit("SET_COMMODITY", this.commodity[key]);
+        this.$router.push("fragrance-result");
       } else {
         this.$toast("请您选择完成后再看结果~");
       }
@@ -155,7 +183,7 @@ export default {
         }
       }
     },
-    suanfa() {
+    getCommdity() {
       const obk = {
         0: "yunxiao",
         1: "yunxiao",
