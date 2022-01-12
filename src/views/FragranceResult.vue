@@ -43,10 +43,13 @@ export default {
   },
   watch: {
     commodity() {
+      debugger;
       this.bg = require(`../assets/image/fragranceResult/${this.commodity.bg}`);
     }
   },
-  created() {},
+  created() {
+    this.bg = require(`../assets/image/fragranceResult/${this.commodity.bg}`);
+  },
   methods: {
     nextPage() {
       this.$router.push("dress");
