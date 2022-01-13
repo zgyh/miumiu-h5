@@ -1,12 +1,16 @@
 <template>
-  <div class="container">
+  <div class="container" :style="bgColor">
     <div class="title"><strong>STEP2</strong> / 选择香水的时尚装扮</div>
     <div class="case-row case-top">
-      <div class="item" v-for="item in caseTop" :key="item.id">
-        <img :src="item.img" alt="" />
+      <div class="item" v-for="item in caseTop" :key="item.id" @click="selectCaseTopItem(item)">
+        <img
+          :src="item.img"
+          :style="{ boxShadow: caseTopItem.id === item.id ? `0 0 16px ${colorVal.color}` : '' }"
+          alt=""
+        />
       </div>
     </div>
-    <div class="center-box">
+    <div class="center-box" :style="{backgroundImage: `url(${require(`../assets/image/dress/${colorVal.bgImg}`)}`}">
       <div class="top">
         <div class="case-name">
           <span>缪缪深红顶部外壳</span>
@@ -15,7 +19,7 @@
         <img class="top-img" src="../assets/image/dress/top-lanse.png" alt="" />
         <div class="case-name case-name-right">
           <div class="name1">EYES ON ME</div>
-          <stong>霓裳天骄</stong>
+          <strong>霓裳天骄</strong>
           <span>女士香水</span>
         </div>
       </div>
@@ -25,18 +29,70 @@
       </div>
     </div>
     <div class="case-row case-bottom">
-      <div class="item" v-for="item in caseBottom" :key="item.id">
-        <img :src="item.img" alt="" />
+      <div
+        class="item"
+        v-for="item in caseBottom"
+        :key="item.id"
+        @click="selectCaseBottomItem(item)"
+      >
+        <img
+          :src="item.img"
+          :style="{ boxShadow: caseBottomItem.id === item.id ? `0 0 16px ${colorVal.color}` : '' }"
+          alt=""
+        />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "Dress",
+  computed: {
+    ...mapState(["commodity"]),
+    colorVal() {
+      if (this.commodity.name === "霓裳云霄") {
+        return {
+          color: "#30afff",
+          bgImg: "yunxiao-bg.png"
+        };
+      } else if (this.commodity.name === "霓裳宠儿") {
+        return {
+          color: "#8d75be",
+          bgImg: "chonger-bg.png"
+        };
+      } else if (this.commodity.name === "霓裳玩童") {
+        return {
+          color: "#bca120",
+          bgImg: "wantong-bg.png"
+        };
+      } else {
+        return {
+          color: "#db9e9e",
+          bgImg: "tianjiao-bg.png"
+        };
+      }
+    },
+    bgColor() {
+      if (this.commodity.name === "霓裳云霄") {
+        return { backgroundColor: "rgba(48, 175, 255, 0.5)" };
+      } else if (this.commodity.name === "霓裳宠儿") {
+        return { backgroundColor: "rgba(141, 117, 190, 0.5)" };
+      } else if (this.commodity.name === "霓裳玩童") {
+        return { backgroundColor: "rgba(188, 161, 32, 0.5)" };
+      } else {
+        return { backgroundColor: "rgba(219, 158, 158, 0.5)" };
+      }
+    }
+  },
   data() {
     return {
+      caseTopItem: {
+        id: 0,
+        img: require("../assets/image/dress/top-lanse.png")
+      },
       caseTop: [
         {
           id: 0,
@@ -44,7 +100,8 @@ export default {
         },
         {
           id: 1,
-          img: require("../assets/image/dress/top-zise.png")
+          img: require("../assets/image/dress/top-zise.png"),
+          color: "#8d75be",
         },
         {
           id: 2,
@@ -55,6 +112,10 @@ export default {
           img: require("../assets/image/dress/top-shenhong.png")
         }
       ],
+      caseBottomItem: {
+        id: 0,
+        img: require("../assets/image/dress/bottom-huangse.png")
+      },
       caseBottom: [
         {
           id: 0,
@@ -74,6 +135,17 @@ export default {
         }
       ]
     };
+  },
+  created() {
+    console.log(this.colorVal);
+  },
+  methods: {
+    selectCaseTopItem(item) {
+      this.caseTopItem = item;
+    },
+    selectCaseBottomItem(item) {
+      this.caseBottomItem = item;
+    }
   }
 };
 </script>
@@ -82,7 +154,6 @@ export default {
 .container {
   height: 100vh;
   overflow-y: scroll;
-  background-color: rgba(#8d75be, 0.5);
   .title {
     margin-top: 20px;
     text-align: center;
@@ -112,7 +183,6 @@ export default {
   .center-box {
     padding: 80px 0 0 0;
     height: 414px;
-    background-image: url("../assets/image/dress/chonger-bg.png");
     background-size: 100% 100%;
     .top {
       position: relative;
@@ -157,9 +227,8 @@ export default {
       padding-left: 4vw;
       text-align: left;
       right: 0;
-      stong {
+      strong {
         font-size: 3.6vw;
-        font-weight: bold;
       }
     }
   }
