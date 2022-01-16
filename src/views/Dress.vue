@@ -10,22 +10,34 @@
         />
       </div>
     </div>
-    <div class="center-box" :style="{backgroundImage: `url(${require(`../assets/image/dress/${colorVal.bgImg}`)}`}">
-      <div class="top">
+    <div
+      class="center-box"
+      :style="{ backgroundImage: `url(${require(`../assets/image/dress/${colorVal.bgImg}`)}` }"
+    >
+      <div class="top" :style="{ backgroundColor: caseTopItem.color }">
         <div class="case-name">
-          <span>缪缪深红顶部外壳</span>
+          <span>{{ caseTopItem.name }}</span>
           <i class="icon-sanjiao"></i>
         </div>
-        <img class="top-img" src="../assets/image/dress/top-lanse.png" alt="" />
+        <img class="top-img" :src="caseTopItem.img" alt="" />
         <div class="case-name case-name-right">
-          <div class="name1">EYES ON ME</div>
-          <strong>霓裳天骄</strong>
+          <div class="name1">{{ commodity.subText }}</div>
+          <strong>{{ commodity.name }}</strong>
           <span>女士香水</span>
         </div>
       </div>
-      <div class="center"></div>
-      <div class="bottom">
-        <img class="bottom-img" src="../assets/image/dress/bottom-huangse.png" alt="" />
+      <div class="center">
+        <div class="case-name case-name-right">
+          <span>Eau de toilette</span>
+          <span>50 ml</span>
+        </div>
+      </div>
+      <div class="bottom" :style="{ backgroundColor: caseBottomItem.color }">
+        <div class="case-name">
+          <span>{{ caseBottomItem.name }}</span>
+          <i class="icon-sanjiao"></i>
+        </div>
+        <img class="bottom-img" :src="caseBottomItem.img" alt="" />
       </div>
     </div>
     <div class="case-row case-bottom">
@@ -42,10 +54,20 @@
         />
       </div>
     </div>
+    <div class="footer">
+      <van-button class="btn" round type="primary" @click="nextPage()">
+        <div>确定搭配</div>
+      </van-button>
+    </div>
   </div>
 </template>
-
 <script>
+/**
+ * #f9e08c
+ * #f08929
+ * #028075
+ * #18263f
+ */
 import { mapState } from "vuex";
 
 export default {
@@ -91,47 +113,66 @@ export default {
     return {
       caseTopItem: {
         id: 0,
-        img: require("../assets/image/dress/top-lanse.png")
+        img: require("../assets/image/dress/top-lanse.png"),
+        color: "#24394c",
+        name: "缪缪蓝色顶部外壳"
       },
       caseTop: [
         {
           id: 0,
-          img: require("../assets/image/dress/top-lanse.png")
+          img: require("../assets/image/dress/top-lanse.png"),
+          color: "#24394c",
+          name: "缪缪蓝色顶部外壳"
         },
         {
           id: 1,
           img: require("../assets/image/dress/top-zise.png"),
           color: "#8d75be",
+          name: "缪缪紫色顶部外壳"
         },
         {
           id: 2,
-          img: require("../assets/image/dress/top-meihong.png")
+          img: require("../assets/image/dress/top-meihong.png"),
+          color: "#f5a695",
+          name: "缪缪粉色顶部外壳"
         },
         {
           id: 3,
-          img: require("../assets/image/dress/top-shenhong.png")
+          img: require("../assets/image/dress/top-shenhong.png"),
+          color: "#cf3d3e",
+          name: "缪缪深红顶部外壳"
         }
       ],
       caseBottomItem: {
         id: 0,
-        img: require("../assets/image/dress/bottom-huangse.png")
+        img: require("../assets/image/dress/bottom-huangse.png"),
+        color: "#f9e08c",
+        name: "缪缪黄色底部外壳"
       },
       caseBottom: [
         {
           id: 0,
-          img: require("../assets/image/dress/bottom-huangse.png")
+          img: require("../assets/image/dress/bottom-huangse.png"),
+          color: "#f9e08c",
+          name: "缪缪黄色底部外壳"
         },
         {
           id: 1,
-          img: require("../assets/image/dress/bottom-chengse.png")
+          img: require("../assets/image/dress/bottom-chengse.png"),
+          color: "#f08929",
+          name: "缪缪橙色底部外壳"
         },
         {
           id: 2,
-          img: require("../assets/image/dress/bottom-lvse.png")
+          img: require("../assets/image/dress/bottom-lvse.png"),
+          color: "#028075",
+          name: "缪缪绿色底部外壳"
         },
         {
           id: 3,
-          img: require("../assets/image/dress/bottom-zise.png")
+          img: require("../assets/image/dress/bottom-zise.png"),
+          color: "#18263f",
+          name: "缪缪蓝色底部外壳"
         }
       ]
     };
@@ -140,6 +181,13 @@ export default {
     console.log(this.colorVal);
   },
   methods: {
+    nextPage() {
+      this.$store.commit("SET_CASE", {
+        top: this.caseTopItem,
+        bottom: this.caseBottomItem
+      });
+      this.$router.push("complete");
+    },
     selectCaseTopItem(item) {
       this.caseTopItem = item;
     },
@@ -199,13 +247,25 @@ export default {
       }
     }
     .center {
+      position: relative;
       background-color: #fff;
       height: 30px;
+      .case-name {
+        padding: 0 10px;
+        color: #000;
+        font-size: 10px;
+        display: flex;
+        justify-content: space-between;
+      }
     }
     .bottom {
+      position: relative;
       height: 120px;
       background-color: #ff8400;
       text-align: center;
+      .case-name {
+        top: 10px;
+      }
       .bottom-img {
         position: relative;
         width: 100px;
@@ -220,7 +280,7 @@ export default {
       color: #fff;
     }
     .name1 {
-      font-size: 3vw;
+      font-size: 10px;
       text-align: left;
     }
     .case-name-right {
@@ -231,6 +291,22 @@ export default {
         font-size: 3.6vw;
       }
     }
+  }
+}
+
+.footer {
+  display: flex;
+  padding: 0 20px;
+  position: relative;
+  top: -14px;
+  justify-content: center;
+  .van-button {
+    width: 150px;
+  }
+  .btn {
+    background: #000 url("../assets/image/icon_dress.png") no-repeat;
+    background-size: 16px;
+    background-position: 85%;
   }
 }
 

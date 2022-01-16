@@ -134,25 +134,29 @@ export default {
           bg: "miumiu-yunxiao.png",
           fullName: "缪缪霓裳云霄女士香水",
           name: "霓裳云霄",
-          id: 0
+          id: 0,
+          subText: "HEAD IN THE CLOUDS"
         },
         chonger: {
           bg: "miumiu-chonger.png",
           fullName: "缪缪霓裳宠儿女士香水",
           name: "霓裳宠儿",
-          id: 1
+          id: 1,
+          subText: "DARING DARING"
         },
         wantong: {
           bg: "miumiu-wantong.png",
           fullName: "缪缪霓裳玩童女士香水",
           name: "霓裳玩童",
-          id: 2
+          id: 2,
+          subText: "SERIAL PLAYER"
         },
         tianjiao: {
           bg: "miumiu-tianjiao.png",
           fullName: "缪缪霓天骄女士香水",
           name: "霓裳天骄",
-          id: 3
+          id: 3,
+          subText: "EYES ON ME"
         }
       }
     };

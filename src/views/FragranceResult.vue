@@ -43,7 +43,6 @@ export default {
   },
   watch: {
     commodity() {
-      debugger;
       this.bg = require(`../assets/image/fragranceResult/${this.commodity.bg}`);
     }
   },
