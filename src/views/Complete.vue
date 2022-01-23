@@ -1,42 +1,48 @@
 <template>
   <div class="container">
-    <div class="top-img">
-      <img :src="bgImg" alt="" />
-      <div class="center-box">
-        <div class="top">
-          <img class="top-img" :src="caseItem.top.img" alt="" />
-        </div>
-        <div class="bottom">
-          <img class="bottom-img" :src="caseItem.bottom.img" alt="" />
+    <div class="top-box">
+      <img class="logo" src="../assets/image/logo.png" alt="" />
+    </div>
+    <div class="content">
+      <div class="top-img">
+        <div class="bg-img"><img :src="bgImg" alt=""></div>
+        <div class="center-box">
+          <div class="top">
+            <img class="top-img" :src="caseItem.top.img" alt="" />
+          </div>
+          <div class="bottom">
+            <img class="bottom-img" :src="caseItem.bottom.img" alt="" />
+          </div>
         </div>
       </div>
+      <div style="display: flex; justify-content: center; margin-top: 15px">
+        <van-button class="btn" round type="primary" @click="modify()">
+          <div>修改组合 <span class="modify-icon"></span></div>
+        </van-button>
+      </div>
+      <div class="full-name">
+        <span>{{ commodity.subText }}</span>
+        <h1>{{ commodity.fullName }}</h1>
+      </div>
+      <div style="font-size: 14px; color: #9f9f9f; text-align: center">
+        {{ caseItem.top.name }}
+        <span class="sub-title-icon"></span>
+        {{ caseItem.bottom.name }}
+      </div>
+      <div class="price">
+        <div class="total">组合价</div>
+        <div>￥1180.00</div>
+      </div>
+      <div class="footer">
+        <van-button class="btn" round type="primary" @click="shopping()">
+          <div>加入购物车 <span class="shopping-cart-icon"></span></div>
+        </van-button>
+        <van-button class="btn" round type="danger" @click="buy()">
+          <div>立即购买 <span class="buy-icon"></span></div>
+        </van-button>
+      </div>
     </div>
-    <div style="display: flex; justify-content: center; margin-top: 15px">
-      <van-button class="btn" round type="primary" @click="modify()">
-        <div>修改组合 <span class="modify-icon"></span></div>
-      </van-button>
-    </div>
-    <div class="full-name">
-      <span>{{ commodity.subText }}</span>
-      <h1>{{ commodity.fullName }}</h1>
-    </div>
-    <div style="font-size: 14px; color: #9f9f9f; text-align: center">
-      {{ caseItem.top.name }}
-      <span class="sub-title-icon"></span>
-      {{ caseItem.bottom.name }}
-    </div>
-    <div class="price">
-      <div class="total">组合价</div>
-      <div>￥1180.00</div>
-    </div>
-    <div class="footer">
-      <van-button class="btn" round type="primary" @click="shopping()">
-        <div>加入购物车 <span class="shopping-cart-icon"></span></div>
-      </van-button>
-      <van-button class="btn" round type="danger" @click="buy()">
-        <div>立即购买 <span class="buy-icon"></span></div>
-      </van-button>
-    </div>
+
   </div>
 </template>
 
@@ -48,15 +54,7 @@ export default {
   computed: {
     ...mapState(["commodity", "caseItem"]),
     bgImg() {
-      if (this.commodity.name === "霓裳云霄") {
-        return require("../assets/image/complate/yunxiao.png");
-      } else if (this.commodity.name === "霓裳宠儿") {
-        return require("../assets/image/complate/chonger.png");
-      } else if (this.commodity.name === "霓裳玩童") {
-        return require("../assets/image/complate/wantong.png");
-      } else {
-        return require("../assets/image/complate/tianjiao.png");
-      }
+      return require(`../assets/image/fragranceResult/${this.commodity.bg}`);
     }
   },
   data() {
@@ -89,22 +87,36 @@ export default {
 .container {
   height: 100%;
   background-color: #fff;
-  background-size: contain;
-  background-repeat: no-repeat;
+  .top-box {
+    padding-top: 4vw;
+    height: 78vw;
+    background-color: #ffede9;
+    text-align: center;
+    .logo {
+      width: 45vw;
+    }
+  }
+  .content {
+    position: relative;
+    top: -48vw;
+  }
   .top-img {
     position: relative;
-    img {
-      width: 100%;
+    display: flex;
+    justify-content: center;
+    .bg-img {
+      position: relative;
+      width: 20vw;
+      margin-right: 1vw;
+      img {
+        position: absolute;
+        bottom: 4px;
+        width: 20vw;
+      }
     }
     .center-box {
-      position: absolute;
-      bottom: 0;
-      left: 47vw;
       .top {
         position: relative;
-        background-repeat: no-repeat;
-        background-size: contain;
-        text-align: center;
         .top-img {
           top: 5vw;
           z-index: 999;
@@ -116,7 +128,7 @@ export default {
       }
       img {
         position: relative;
-        width: 24vw;
+        width: 23vw;
       }
     }
   }
@@ -148,7 +160,6 @@ export default {
       font-weight: normal;
       font-size: 14px;
       height: 23px;
-      background-image: url("../assets/image/complate/text-color.png");
       background-repeat: no-repeat;
       background-size: 44px;
       background-position: center bottom;

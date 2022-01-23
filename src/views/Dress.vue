@@ -1,5 +1,8 @@
 <template>
-  <div class="container" :style="bgColor">
+  <div class="container">
+    <div class="top-box">
+      <img class="logo" src="../assets/image/logo.png" alt="" />
+    </div>
     <div class="title"><strong>STEP2</strong> / 选择香水的时尚装扮</div>
     <div class="case-row case-top">
       <div class="item" v-for="item in caseTop" :key="item.id" @click="selectCaseTopItem(item)">
@@ -10,54 +13,62 @@
         />
       </div>
     </div>
-    <div
-      class="center-box"
-      :style="{ backgroundImage: `url(${require(`../assets/image/dress/${colorVal.bgImg}`)}` }"
-    >
-      <div class="top" :style="{ backgroundColor: caseTopItem.color }">
-        <div class="case-name">
-          <span>{{ caseTopItem.name }}</span>
-          <i class="icon-sanjiao"></i>
+    <div class="center-box">
+      <div class="top">
+        <div class="row" :style="{ backgroundColor: caseTopItem.color }">
+          <div class="case-name">
+            <span>{{ caseTopItem.name }}</span>
+            <i class="icon-sanjiao"></i>
+          </div>
+          <div class="case-name" style="text-align: left">
+            <div style="position: relative">
+              <span class="scal">{{ commodity.subText }}</span>
+            </div>
+            <div>
+              <strong>{{ commodity.name }}</strong>
+              <span>女士香水</span>
+            </div>
+          </div>
         </div>
-        <img class="top-img" :src="caseTopItem.img" alt="" />
-        <div class="case-name case-name-right">
-          <div class="name1">{{ commodity.subText }}</div>
-          <strong>{{ commodity.name }}</strong>
-          <span>女士香水</span>
+        <div class="row2"></div>
+        <div class="row" :style="{ backgroundColor: caseBottomItem.color }">
+          <div class="case-name">
+            <span>{{ caseBottomItem.name }}</span>
+            <i class="icon-sanjiao"></i>
+          </div>
+          <div class="case-name" style="text-align: left">
+            <span>Eau de toilette &nbsp;&nbsp;&nbsp;&nbsp;</span>
+            <span>50 ml</span>
+          </div>
         </div>
       </div>
-      <div class="center">
-        <div class="case-name case-name-right">
-          <span>Eau de toilette</span>
-          <span>50 ml</span>
+      <div class="bottom">
+        <div class="img">
+          <img class="top-img" :src="caseTopItem.img" alt="" />
+        </div>
+        <div><img class="bottom-img" :src="caseBottomItem.img" alt="" /></div>
+        <div class="case-row">
+          <div
+            class="item"
+            v-for="item in caseBottom"
+            :key="item.id"
+            @click="selectCaseBottomItem(item)"
+          >
+            <img
+              :src="item.img"
+              :style="{
+                boxShadow: caseBottomItem.id === item.id ? `0 0 16px ${colorVal.color}` : ''
+              }"
+              alt=""
+            />
+          </div>
+        </div>
+        <div class="footer">
+          <van-button class="btn" round type="primary" @click="nextPage()">
+            <div>确定搭配</div>
+          </van-button>
         </div>
       </div>
-      <div class="bottom" :style="{ backgroundColor: caseBottomItem.color }">
-        <div class="case-name">
-          <span>{{ caseBottomItem.name }}</span>
-          <i class="icon-sanjiao"></i>
-        </div>
-        <img class="bottom-img" :src="caseBottomItem.img" alt="" />
-      </div>
-    </div>
-    <div class="case-row case-bottom">
-      <div
-        class="item"
-        v-for="item in caseBottom"
-        :key="item.id"
-        @click="selectCaseBottomItem(item)"
-      >
-        <img
-          :src="item.img"
-          :style="{ boxShadow: caseBottomItem.id === item.id ? `0 0 16px ${colorVal.color}` : '' }"
-          alt=""
-        />
-      </div>
-    </div>
-    <div class="footer">
-      <van-button class="btn" round type="primary" @click="nextPage()">
-        <div>确定搭配</div>
-      </van-button>
     </div>
   </div>
 </template>
@@ -201,11 +212,19 @@ export default {
 <style scoped lang="scss">
 .container {
   height: 100vh;
+  background-color: #ffede9;
   overflow-y: scroll;
-  .title {
-    margin-top: 20px;
+  .top-box {
+    padding-top: 4vw;
+    background-color: #ffede9;
     text-align: center;
-    color: #fff;
+    .logo {
+      width: 35vw;
+    }
+  }
+  .title {
+    margin-top: 3vw;
+    text-align: center;
   }
   .case-row {
     padding: 0 10vw;
@@ -220,92 +239,61 @@ export default {
     }
   }
   .case-top {
-    margin-top: 30px;
+    margin: 10vw 0;
     position: relative;
-    top: 36px;
-  }
-  .case-bottom {
-    position: relative;
-    top: -34px;
   }
   .center-box {
-    padding: 80px 0 0 0;
-    height: 414px;
-    background-size: 100% 100%;
+    position: relative;
     .top {
-      position: relative;
-      height: 90px;
-      background-color: #8d75be;
-      background-repeat: no-repeat;
-      background-size: contain;
+      width: 100vw;
+      position: absolute;
+      top: 13vw;
       text-align: center;
-      .top-img {
-        position: relative;
-        top: -18px;
-        width: 100px;
-        z-index: 999;
-      }
-    }
-    .center {
-      position: relative;
-      background-color: #fff;
-      height: 30px;
       .case-name {
-        padding: 0 10px;
-        color: #000;
-        font-size: 10px;
+        padding-left: 2vw;
+        width: calc((100% - 20vw) / 2);
+        font-size: 3vw;
+        color: #fff;
+      }
+      .row {
         display: flex;
         justify-content: space-between;
+        align-items: center;
+        height: 12vw;
+      }
+      .row2 {
+        position: relative;
+        background-color: #fff;
+        height: 6vw;
       }
     }
     .bottom {
-      position: relative;
-      height: 120px;
-      background-color: #ff8400;
       text-align: center;
-      .case-name {
-        top: 10px;
+      .top-img {
+        position: relative;
+        width: 20vw;
+        z-index: 999;
       }
       .bottom-img {
         position: relative;
-        width: 100px;
+        width: 20vw;
         top: -17px;
-      }
-    }
-    .case-name {
-      position: absolute;
-      bottom: 8px;
-      width: calc((100% - 100px) / 2);
-      font-size: 3.5vw;
-      color: #fff;
-    }
-    .name1 {
-      font-size: 10px;
-      text-align: left;
-    }
-    .case-name-right {
-      padding-left: 4vw;
-      text-align: left;
-      right: 0;
-      strong {
-        font-size: 3.6vw;
       }
     }
   }
 }
 
 .footer {
+  margin-top: 4vw;
   display: flex;
-  padding: 0 20px;
   position: relative;
-  top: -14px;
   justify-content: center;
   .van-button {
     width: 150px;
   }
   .btn {
     background: #000 url("../assets/image/icon_dress.png") no-repeat;
-    background-size: 16px;
+    background-size: 3.5vw;
     background-position: 85%;
   }
 }
@@ -313,11 +301,20 @@ export default {
 .icon-sanjiao {
   margin: 0 5px;
   display: inline-block;
-  width: 12px;
-  height: 12px;
+  width: 2.5vw;
+  height: 2.5vw;
   background-image: url("../assets/image/icon-sanjiao.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+}
+
+.scal {
+  white-space: nowrap;
+  display: inline-block;
+  transform: scale(0.7);
+  position: absolute;
+  top: -12px;
+  left: -20px;
 }
 </style>

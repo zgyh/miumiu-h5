@@ -1,29 +1,31 @@
 <template>
-  <div class="container" :style="{ backgroundImage: `url(${bg})` }">
-    <!--    <div>-->
-    <!--      <div class="p1">-->
-    <!--        <div class="a">DARING DARING</div>-->
-    <!--        <div class="b">缪缪霓裳宠儿女士香水</div>-->
-    <!--      </div>-->
-    <!--      <div class="p2">缪缪迷幻想</div>-->
-    <!--      <div>-->
-    <!--        <div>调香师Alexis Dadier</div>-->
-    <!--        <div>灵感源于成熟老练</div>-->
-    <!--        <div>与青春热忱的碰撞</div>-->
-    <!--      </div>-->
-    <!--      <div>-->
-    <!--        <div>清脆爽口的黑加仑</div>-->
-    <!--        <div>与丝绒般薰衣草互相吸引</div>-->
-    <!--        <div>缓缓散发出令人迷醉的麝香气氛</div>-->
-    <!--      </div>-->
-    <!--    </div>-->
-    <div class="footer">
-      <van-button style="border: 1px solid #1b1b1b; margin-right: 10px" round @click="back()">
-        返回上一步
-      </van-button>
-      <van-button class="btn" round type="primary" @click="nextPage()">
-        <div>为TA装扮</div>
-      </van-button>
+  <div class="container">
+    <div class="top-box">
+      <img class="logo" src="../assets/image/logo.png" alt="" />
+    </div>
+    <div class="content">
+      <div class="content-top">
+        <div class="left">
+          <img :src="bg" alt="" />
+        </div>
+        <div class="right">
+          <div class="p1">
+            <div class="a">{{ commodity.subText }}</div>
+            <div class="b">{{ commodity.fullName }}</div>
+          </div>
+          <div class="p2">{{ commodity.desc }}</div>
+          <div class="p3" v-html="commodity.desc1"></div>
+        </div>
+      </div>
+      <div class="bottom" v-html="commodity.desc2"></div>
+      <div class="footer">
+        <van-button style="border: 1px solid #1b1b1b; margin-right: 10px" round @click="back()">
+          返回上一步
+        </van-button>
+        <van-button class="btn" round type="primary" @click="nextPage()">
+          <div>为TA装扮</div>
+        </van-button>
+      </div>
     </div>
   </div>
 </template>
@@ -63,12 +65,66 @@ export default {
 <style scoped lang="scss">
 .container {
   height: 100vh;
-  padding: 90vh 0 0 0;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
+  padding: 0;
+  background-color: #fff;
+  .top-box {
+    padding-top: 8vw;
+    height: 78vw;
+    background-color: #ffede9;
+    text-align: center;
+    .logo {
+      width: 50vw;
+    }
+  }
+  .content {
+    padding: 6vw;
+    position: relative;
+    top: -48vw;
+    .content-top {
+      display: flex;
+    }
+
+    .left {
+      min-width: 30vw;
+      min-height: 82vw;
+      img {
+        width: 32vw;
+      }
+    }
+    .right {
+      margin-left: 3vw;
+      position: relative;
+      top: 30vw;
+      .p1 {
+        .a {
+          font-size: 3vw;
+        }
+        .b {
+          font-weight: 900;
+          font-size: 4.8vw;
+        }
+      }
+      .p2 {
+        margin-top: 5vw;
+        font-size: 3.4vw;
+        font-weight: bold;
+      }
+      .p3 {
+        margin-top: 5vw;
+        font-size: 3.4vw;
+        line-height: 4.8vw;
+      }
+    }
+    .bottom {
+      text-align: center;
+      margin-top: 5vw;
+      font-size: 3.4vw;
+      line-height: 6vw;
+    }
+  }
 
   .footer {
+    margin-top: 8vw;
     display: flex;
     padding: 0 20px;
     .van-button {
@@ -79,20 +135,6 @@ export default {
       background-size: 16px;
       background-position: 85%;
     }
-  }
-  .p1 {
-    //padding: 8vw 0 0 43.3vw;
-    .a {
-      font-size: 3.5vw;
-    }
-    .b {
-      font-weight: 900;
-      font-size: 4.8vw;
-    }
-  }
-  .p2 {
-    font-size: 3.4vw;
-    padding: 4.3vw 0 0 43.3vw;
   }
 }
 </style>

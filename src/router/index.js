@@ -20,11 +20,11 @@ const routes = [
     path: "/",
     name: "index",
     component: AppLayout,
-    redirect: "/home",
+    redirect: "/st-v1",
     children: [
       // 首页
       {
-        path: "home",
+        path: "st-v1",
         name: "Home",
         component: Home,
         meta: {
@@ -34,7 +34,7 @@ const routes = [
         }
       },
       {
-        path: "home1",
+        path: "st-v2",
         name: "Home1",
         component: Home1,
         meta: {
