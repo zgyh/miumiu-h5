@@ -150,6 +150,8 @@ export default {
           fullName: "缪缪霓裳云霄女士香水",
           name: "霓裳云霄",
           id: 0,
+          code: 766460,
+          CNY: 569,
           subText: "HEAD IN THE CLOUDS",
           desc: "缪缪云朵香",
           desc1: ` <div>由调香大师</div>
@@ -164,6 +166,8 @@ export default {
           fullName: "缪缪霓裳宠儿女士香水",
           name: "霓裳宠儿",
           id: 1,
+          code: 766452,
+          CNY: 569,
           subText: "DARING DARING",
           desc: "缪缪迷幻香",
           desc1: ` <div>调香师<strong>Alexis Dadier</strong></div>
@@ -178,6 +182,8 @@ export default {
           fullName: "缪缪霓裳玩童女士香水",
           name: "霓裳玩童",
           id: 2,
+          code: 766466,
+          CNY: 569,
           subText: "SERIAL PLAYER",
           desc: "缪缪潮玩香",
           desc1: ` <div>由缪缪长期合作调香师</div>
@@ -193,6 +199,8 @@ export default {
           fullName: "缪缪霓天骄女士香水",
           name: "霓裳天骄",
           id: 3,
+          code: 766454,
+          CNY: 569,
           subText: "EYES ON ME",
           desc: "缪缪 C 位香",
           desc1: ` <div>由调香大师</div>
@@ -292,6 +300,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 .container {
+  background-color: #fff;
   .top-box {
     padding: 0 4vw;
     height: 18vw;

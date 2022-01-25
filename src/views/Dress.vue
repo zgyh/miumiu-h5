@@ -14,34 +14,34 @@
       </div>
     </div>
     <div class="center-box">
-      <div class="top">
-        <div class="row" :style="{ backgroundColor: caseTopItem.color }">
-          <div class="case-name">
-            <span>{{ caseTopItem.name }}</span>
-            <i class="icon-sanjiao"></i>
-          </div>
-          <div class="case-name" style="text-align: left">
-            <div style="position: relative">
-              <span class="scal">{{ commodity.subText }}</span>
-            </div>
-            <div>
-              <strong>{{ commodity.name }}</strong>
-              <span>女士香水</span>
-            </div>
-          </div>
-        </div>
-        <div class="row2"></div>
-        <div class="row" :style="{ backgroundColor: caseBottomItem.color }">
-          <div class="case-name">
-            <span>{{ caseBottomItem.name }}</span>
-            <i class="icon-sanjiao"></i>
-          </div>
-          <div class="case-name" style="text-align: left">
-            <span>Eau de toilette &nbsp;&nbsp;&nbsp;&nbsp;</span>
-            <span>50 ml</span>
-          </div>
-        </div>
-      </div>
+      <!--      <div class="top">-->
+      <!--        <div class="row" :style="{ backgroundColor: caseTopItem.color }">-->
+      <!--          <div class="case-name">-->
+      <!--            <span>{{ caseTopItem.name }}</span>-->
+      <!--            <i class="icon-sanjiao"></i>-->
+      <!--          </div>-->
+      <!--          <div class="case-name" style="text-align: left">-->
+      <!--            <div style="position: relative">-->
+      <!--              <span class="scal">{{ commodity.subText }}</span>-->
+      <!--            </div>-->
+      <!--            <div>-->
+      <!--              <strong>{{ commodity.name }}</strong>-->
+      <!--              <span>女士香水</span>-->
+      <!--            </div>-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--        <div class="row2"></div>-->
+      <!--        <div class="row" :style="{ backgroundColor: caseBottomItem.color }">-->
+      <!--          <div class="case-name">-->
+      <!--            <span>{{ caseBottomItem.name }}</span>-->
+      <!--            <i class="icon-sanjiao"></i>-->
+      <!--          </div>-->
+      <!--          <div class="case-name" style="text-align: left">-->
+      <!--            <span>Eau de toilette &nbsp;&nbsp;&nbsp;&nbsp;</span>-->
+      <!--            <span>50 ml</span>-->
+      <!--          </div>-->
+      <!--        </div>-->
+      <!--      </div>-->
       <div class="bottom">
         <div class="img">
           <img class="top-img" :src="caseTopItem.img" alt="" />
@@ -80,7 +80,73 @@
  * #18263f
  */
 import { mapState } from "vuex";
+const caseTop = [
+  {
+    id: 0,
+    code: 766462,
+    CNY: 121,
+    img: require("../assets/image/dress/top-lanse.png"),
+    color: "#24394c",
+    name: "缪缪蔚蓝顶部外壳"
+  },
+  {
+    id: 1,
+    CNY: 121,
+    img: require("../assets/image/dress/top-zise.png"),
+    color: "#8d75be",
+    name: "缪缪紫色顶部外壳"
+  },
+  {
+    id: 2,
+    CNY: 121,
+    img: require("../assets/image/dress/top-meihong.png"),
+    color: "#f5a695",
+    name: "缪缪粉色顶部外壳"
+  },
+  {
+    id: 3,
+    code: 766456,
+    CNY: 121,
+    img: require("../assets/image/dress/top-shenhong.png"),
+    color: "#cf3d3e",
+    name: "缪缪正红顶部外壳"
+  }
+];
 
+const caseBottom = [
+  {
+    id: 0,
+    code: 766468,
+    CNY: 121,
+    img: require("../assets/image/dress/bottom-huangse.png"),
+    color: "#f9e08c",
+    name: "缪缪嫩黄底部外壳"
+  },
+  {
+    id: 1,
+    code: 766458,
+    CNY: 121,
+    img: require("../assets/image/dress/bottom-chengse.png"),
+    color: "#f08929",
+    name: "缪缪暖橘底部外壳"
+  },
+  {
+    id: 2,
+    code: 766464,
+    CNY: 121,
+    img: require("../assets/image/dress/bottom-lvse.png"),
+    color: "#028075",
+    name: "缪缪石绿底部外壳"
+  },
+  {
+    id: 3,
+    code: 766450,
+    CNY: 121,
+    img: require("../assets/image/dress/bottom-zise.png"),
+    color: "#18263f",
+    name: "缪缪海军蓝底部外壳"
+  }
+];
 export default {
   name: "Dress",
   computed: {
@@ -122,74 +188,14 @@ export default {
   },
   data() {
     return {
-      caseTopItem: {
-        id: 0,
-        img: require("../assets/image/dress/top-lanse.png"),
-        color: "#24394c",
-        name: "缪缪蓝色顶部外壳"
-      },
-      caseTop: [
-        {
-          id: 0,
-          img: require("../assets/image/dress/top-lanse.png"),
-          color: "#24394c",
-          name: "缪缪蓝色顶部外壳"
-        },
-        {
-          id: 1,
-          img: require("../assets/image/dress/top-zise.png"),
-          color: "#8d75be",
-          name: "缪缪紫色顶部外壳"
-        },
-        {
-          id: 2,
-          img: require("../assets/image/dress/top-meihong.png"),
-          color: "#f5a695",
-          name: "缪缪粉色顶部外壳"
-        },
-        {
-          id: 3,
-          img: require("../assets/image/dress/top-shenhong.png"),
-          color: "#cf3d3e",
-          name: "缪缪深红顶部外壳"
-        }
-      ],
-      caseBottomItem: {
-        id: 0,
-        img: require("../assets/image/dress/bottom-huangse.png"),
-        color: "#f9e08c",
-        name: "缪缪黄色底部外壳"
-      },
-      caseBottom: [
-        {
-          id: 0,
-          img: require("../assets/image/dress/bottom-huangse.png"),
-          color: "#f9e08c",
-          name: "缪缪黄色底部外壳"
-        },
-        {
-          id: 1,
-          img: require("../assets/image/dress/bottom-chengse.png"),
-          color: "#f08929",
-          name: "缪缪橙色底部外壳"
-        },
-        {
-          id: 2,
-          img: require("../assets/image/dress/bottom-lvse.png"),
-          color: "#028075",
-          name: "缪缪绿色底部外壳"
-        },
-        {
-          id: 3,
-          img: require("../assets/image/dress/bottom-zise.png"),
-          color: "#18263f",
-          name: "缪缪蓝色底部外壳"
-        }
-      ]
+      caseTop,
+      caseBottom,
+      caseTopItem: caseTop[0],
+      caseBottomItem: caseBottom[0]
     };
   },
   created() {
-    console.log(this.colorVal);
+    // console.log(this.colorVal);
   },
   methods: {
     nextPage() {
@@ -227,6 +233,7 @@ export default {
     text-align: center;
   }
   .case-row {
+    margin-top: 2vw;
     padding: 0 10vw;
     display: flex;
     justify-content: space-between;
@@ -239,7 +246,7 @@ export default {
     }
   }
   .case-top {
-    margin: 10vw 0;
+    margin: 7vw 0;
     position: relative;
   }
   .center-box {

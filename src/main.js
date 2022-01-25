@@ -11,18 +11,18 @@ import "vant/lib/index.less";
 
 Vue.config.productionTip = false;
 
-router.beforeEach((to, from, next) => {
-  if (to.matched.some(record => record.meta.requiresAuth)) {
-    // if (!store.state.user.user) {
-    //   console.log(!store.state.user.user);
-    //   next({ path: "/login" });
-    // } else {
-    //   next();
-    // }
-  } else {
-    next();
-  }
-});
+// router.beforeEach((to, from, next) => {
+//   if (to.matched.some(record => record.meta.requiresAuth)) {
+//     // if (!store.state.user.user) {
+//     //   console.log(!store.state.user.user);
+//     //   next({ path: "/login" });
+//     // } else {
+//     //   next();
+//     // }
+//   } else {
+//     next();
+//   }
+// });
 
 window.wx.miniProgram.getEnv(e => {
   if (e.miniprogram) {

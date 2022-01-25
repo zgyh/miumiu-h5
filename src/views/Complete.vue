@@ -5,7 +5,7 @@
     </div>
     <div class="content">
       <div class="top-img">
-        <div class="bg-img"><img :src="bgImg" alt=""></div>
+        <div class="bg-img"><img :src="bgImg" alt="" /></div>
         <div class="center-box">
           <div class="top">
             <img class="top-img" :src="caseItem.top.img" alt="" />
@@ -31,7 +31,7 @@
       </div>
       <div class="price">
         <div class="total">组合价</div>
-        <div>￥1180.00</div>
+        <div>￥{{ commodity.CNY + caseItem.top.CNY + caseItem.bottom.CNY }}</div>
       </div>
       <div class="footer">
         <van-button class="btn" round type="primary" @click="shopping()">
@@ -42,7 +42,6 @@
         </van-button>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -58,27 +57,18 @@ export default {
     }
   },
   data() {
-    return {
-      caseTopItem: {
-        id: 0,
-        img: require("../assets/image/dress/top-shenhong.png"),
-        color: "#24394c",
-        name: "缪缪蓝色顶部外壳"
-      },
-      caseBottomItem: {
-        id: 0,
-        img: require("../assets/image/dress/bottom-huangse.png"),
-        color: "#f9e08c",
-        name: "缪缪黄色底部外壳"
-      }
-    };
+    return {};
   },
   methods: {
     modify() {
       this.$router.go(-1);
     },
-    shopping() {},
-    buy() {}
+    shopping() {
+      window.wx.miniProgram.navigateTo("/pages/cart/home");
+    },
+    buy() {
+      window.wx.miniProgram.navigateTo("/packages/plus/purchase/home?shopId=128");
+    }
   }
 };
 </script>
