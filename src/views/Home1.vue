@@ -82,7 +82,7 @@ export default {
           id: 1,
           code: 766452,
           CNY: 569,
-          subText: "DARING DARING",
+          subText: "DARING DARLING",
           desc: "缪缪迷幻香",
           desc1: ` <div>调香师<strong>Alexis Dadier</strong></div>
             <div>灵感源于成熟老练</div>

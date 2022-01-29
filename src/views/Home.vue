@@ -168,7 +168,7 @@ export default {
           id: 1,
           code: 766452,
           CNY: 569,
-          subText: "DARING DARING",
+          subText: "DARING DARLING",
           desc: "缪缪迷幻香",
           desc1: ` <div>调香师<strong>Alexis Dadier</strong></div>
             <div>灵感源于成熟老练</div>
@@ -196,7 +196,7 @@ export default {
         },
         tianjiao: {
           bg: "miumiu-tianjiao.png",
-          fullName: "缪缪霓天骄女士香水",
+          fullName: "缪缪霓裳天骄女士香水",
           name: "霓裳天骄",
           id: 3,
           code: 766454,

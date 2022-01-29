@@ -11,6 +11,7 @@
           :style="{ boxShadow: caseTopItem.id === item.id ? `0 0 16px ${colorVal.color}` : '' }"
           alt=""
         />
+        <div class="no-listed" v-show="item.noListed">暂未上架</div>
       </div>
     </div>
     <div class="center-box">
@@ -94,14 +95,16 @@ const caseTop = [
     CNY: 121,
     img: require("../assets/image/dress/top-zise.png"),
     color: "#8d75be",
-    name: "缪缪紫色顶部外壳"
+    name: "缪缪紫色顶部外壳",
+    noListed: true
   },
   {
     id: 2,
     CNY: 121,
     img: require("../assets/image/dress/top-meihong.png"),
     color: "#f5a695",
-    name: "缪缪粉色顶部外壳"
+    name: "缪缪粉色顶部外壳",
+    noListed: true
   },
   {
     id: 3,
@@ -206,6 +209,10 @@ export default {
       this.$router.push("complete");
     },
     selectCaseTopItem(item) {
+      if (item.noListed) {
+        this.$toast("抱歉，该款暂未上架~");
+        return;
+      }
       this.caseTopItem = item;
     },
     selectCaseBottomItem(item) {
@@ -288,6 +295,12 @@ export default {
       }
     }
   }
+}
+
+.no-listed {
+  color: #fa4848;
+  text-align: center;
+  font-size: 3vw;
 }
 
 .footer {
