@@ -215,7 +215,7 @@ export default {
   methods: {
     nextPage() {
       const key = this.getCommdity();
-      console.log(key);
+      // console.log(key);
       if (this.selectedArr1.length === 2 && this.selectedArr2.length === 2) {
         this.$store.commit("SET_COMMODITY", this.commodity[key]);
         this.$router.push("fragrance-result");
