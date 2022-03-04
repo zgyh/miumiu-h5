@@ -9,6 +9,7 @@
           <img :src="bg" alt="" />
         </div>
         <div class="right">
+          <img src="" alt="">
           <div class="p1">
             <div class="a">{{ commodity.subText }}</div>
             <div class="b">{{ commodity.fullName }}</div>
@@ -88,7 +89,7 @@ export default {
       min-width: 30vw;
       min-height: 82vw;
       img {
-        width: 32vw;
+        width: 30vw;
       }
     }
     .right {
