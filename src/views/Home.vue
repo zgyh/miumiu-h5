@@ -65,7 +65,7 @@ export default {
         chonger: {
           bg: "miumiu-chonger.png",
           banner: "1-1.png",
-          banner1: "2-4.png",
+          banner1: this.util().getPixelRatioImage("2-4.png"),
           fullName: "缪缪霓裳宠儿女士香水",
           name: "霓裳宠儿",
           id: 1,
@@ -83,7 +83,7 @@ export default {
         wantong: {
           bg: "miumiu-wantong.png",
           banner: "1-3.png",
-          banner1: "2-1.png",
+          banner1: this.util().getPixelRatioImage("2-1.png"),
           fullName: "缪缪霓裳玩童女士香水",
           name: "霓裳玩童",
           id: 2,
@@ -102,7 +102,7 @@ export default {
         tianjiao: {
           bg: "miumiu-tianjiao.png",
           banner: "2-3.png",
-          banner1: "1-4.png",
+          banner1: this.util().getPixelRatioImage("1-4.png"),
           fullName: "缪缪霓裳天骄女士香水",
           name: "霓裳天骄",
           id: 3,

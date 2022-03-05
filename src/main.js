@@ -1,10 +1,13 @@
 import Vue from "vue";
 import "./plugins/axios";
 import "./plugins/vant";
+import "./plugins/vconsole";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 
+import mixin from "./common/mixin";
+Vue.mixin(mixin);
 // 引入全部样式
 import "vant/lib/index.less";
 
@@ -35,6 +38,8 @@ window.wx.miniProgram.getEnv(e => {
 window.document.body.addEventListener("focusout", () => {
   window.scrollTo(0, 0);
 });
+
+
 
 new Vue({
   router,

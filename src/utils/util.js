@@ -51,83 +51,85 @@ function formatDate(val, format) {
  * 验证身份证号
  * @param {number} personnumber
  */
- function checkIDCard(personnumber) {
-	if (!personnumber) {
-		return false;
-	}
-	personnumber = personnumber.toUpperCase();
-	//身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X。
-	if (!(/(^\d{15}$)|(^\d{17}([0-9]|X)$)/.test(personnumber))) {
-		return false;
-	}
-	var len, re;
-	len = personnumber.length;
-	//校验位按照ISO 7064:1983.MOD 11-2的规定生成，X可以认为是数字10。
-	var arrInt = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2);
-	var arrCh = new Array('1', '0', 'X', '9', '8', '7', '6', '5', '4', '3', '2');
-	if (len == 15) {
-		re = new RegExp(/^(\d{6})(\d{2})(\d{2})(\d{2})(\d{3})$/);
-		var arrSplit = personnumber.match(re);
-		//检查生日日期是否正确
-		var dtmBirth = new Date('19' + arrSplit[2] + '/' + arrSplit[3] + '/' + arrSplit[4]);
-		var bGoodDay;
-		bGoodDay = (dtmBirth.getFullYear() == Number(arrSplit[2])) && ((dtmBirth.getMonth() + 1) == Number(arrSplit[
-			3])) && (
-			dtmBirth.getDate() == Number(arrSplit[4]));
-		if (!bGoodDay) {
-			return false;
-		} else {
-			//将15位身份证转成18位
-			var nTemp = 0,
-				i;
-			personnumber = personnumber.substr(0, 6) + '19' + personnumber.substr(6, personnumber.length - 6);
-			for (i = 0; i < 17; i++) {
-				nTemp += personnumber.substr(i, 1) * arrInt[i];
-			}
-			personnumber += arrCh[nTemp % 11];
-			return true;
-		}
-	}
-	if (len == 18) {
-		re = new RegExp(/^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/);
-		var arrSplit = personnumber.match(re);
+function checkIDCard(personnumber) {
+  if (!personnumber) {
+    return false;
+  }
+  personnumber = personnumber.toUpperCase();
+  //身份证号码为15位或者18位，15位时全为数字，18位前17位为数字，最后一位是校验位，可能为数字或字符X。
+  if (!/(^\d{15}$)|(^\d{17}([0-9]|X)$)/.test(personnumber)) {
+    return false;
+  }
+  var len, re;
+  len = personnumber.length;
+  //校验位按照ISO 7064:1983.MOD 11-2的规定生成，X可以认为是数字10。
+  var arrInt = new Array(7, 9, 10, 5, 8, 4, 2, 1, 6, 3, 7, 9, 10, 5, 8, 4, 2);
+  var arrCh = new Array("1", "0", "X", "9", "8", "7", "6", "5", "4", "3", "2");
+  if (len == 15) {
+    re = new RegExp(/^(\d{6})(\d{2})(\d{2})(\d{2})(\d{3})$/);
+    var arrSplit = personnumber.match(re);
+    //检查生日日期是否正确
+    var dtmBirth = new Date("19" + arrSplit[2] + "/" + arrSplit[3] + "/" + arrSplit[4]);
+    var bGoodDay;
+    bGoodDay =
+      dtmBirth.getFullYear() == Number(arrSplit[2]) &&
+      dtmBirth.getMonth() + 1 == Number(arrSplit[3]) &&
+      dtmBirth.getDate() == Number(arrSplit[4]);
+    if (!bGoodDay) {
+      return false;
+    } else {
+      //将15位身份证转成18位
+      var nTemp = 0,
+        i;
+      personnumber =
+        personnumber.substr(0, 6) + "19" + personnumber.substr(6, personnumber.length - 6);
+      for (i = 0; i < 17; i++) {
+        nTemp += personnumber.substr(i, 1) * arrInt[i];
+      }
+      personnumber += arrCh[nTemp % 11];
+      return true;
+    }
+  }
+  if (len == 18) {
+    re = new RegExp(/^(\d{6})(\d{4})(\d{2})(\d{2})(\d{3})([0-9]|X)$/);
+    var arrSplit = personnumber.match(re);
 
-		//检查生日日期是否正确
-		var dtmBirth = new Date(arrSplit[2] + "/" + arrSplit[3] + "/" + arrSplit[4]);
-		var bGoodDay;
-		bGoodDay = (dtmBirth.getFullYear() == Number(arrSplit[2])) && ((dtmBirth.getMonth() + 1) == Number(arrSplit[
-			3])) && (
-			dtmBirth.getDate() == Number(arrSplit[4]));
-		if (!bGoodDay) {
-			return false;
-		} else {
-			var valnum;
-			var nTemp = 0,
-				i;
-			for (i = 0; i < 17; i++) {
-				nTemp += personnumber.substr(i, 1) * arrInt[i];
-			}
-			valnum = arrCh[nTemp % 11];
-			if (valnum != personnumber.substr(17, 1)) {
-				return false;
-			}
-			return true;
-		}
-	}
-	return false;
+    //检查生日日期是否正确
+    var dtmBirth = new Date(arrSplit[2] + "/" + arrSplit[3] + "/" + arrSplit[4]);
+    var bGoodDay;
+    bGoodDay =
+      dtmBirth.getFullYear() == Number(arrSplit[2]) &&
+      dtmBirth.getMonth() + 1 == Number(arrSplit[3]) &&
+      dtmBirth.getDate() == Number(arrSplit[4]);
+    if (!bGoodDay) {
+      return false;
+    } else {
+      var valnum;
+      var nTemp = 0,
+        i;
+      for (i = 0; i < 17; i++) {
+        nTemp += personnumber.substr(i, 1) * arrInt[i];
+      }
+      valnum = arrCh[nTemp % 11];
+      if (valnum != personnumber.substr(17, 1)) {
+        return false;
+      }
+      return true;
+    }
+  }
+  return false;
 }
 
 /**
  * 验证手机号
  * @param {string} phone
  */
- function checkPhone(phone) {
-	if (!(/^1[3456789]\d{9}$/.test(phone))) {
-		return false;
-	}
-	return true;
+function checkPhone(phone) {
+  if (!/^1[3456789]\d{9}$/.test(phone)) {
+    return false;
+  }
+  return true;
 }
-
 
 /**
  *
@@ -259,24 +261,6 @@ function verificationForm(rules = {}, formData = {}) {
   }
 }
 
-// 获取分类-标签树，查询需要的分类||标签
-// 学科划分"category_property": 0,
-// 技术分类"category_property": 2,
-// 科普分类"category_property": 4,
-// 大会"category_property": 8,
-function category_property(arr, id) {
-  for (let item of arr) {
-    if (item.category_property === id) {
-      if (arr.indexOf(item) !== -1) {
-        return arr.indexOf(item);
-      } else {
-        console.error("category_property不存在");
-        return false;
-      }
-    }
-  }
-}
-
 function getQueryVariable(variable) {
   let query = window.location.hash.split("?")[1];
   if (!query) return;
@@ -290,6 +274,23 @@ function getQueryVariable(variable) {
   }
   return false;
 }
+
+/**
+ * 获取设备像素比
+ * name {string} 图片名
+ * suffix {string} 文件类型后缀
+ * return {string}
+ */
+const DEVICE_PIXEL_RATIO = window.devicePixelRatio;
+function getPixelRatioImage(name, suffix = ".png") {
+  name = name.replace(/\.png/, "");
+  console.log(name);
+  if (DEVICE_PIXEL_RATIO < 2) {
+    return `${name}${suffix}`;
+  }
+  return `${name}@${Math.floor(DEVICE_PIXEL_RATIO)}x${suffix}`;
+}
+
 module.exports = {
   formatDate,
   checkIDCard,
@@ -297,5 +298,5 @@ module.exports = {
   verificationForm,
   checkPhone,
   getQueryVariable,
-  category_property
+  getPixelRatioImage
 };
