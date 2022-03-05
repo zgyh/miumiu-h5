@@ -46,7 +46,8 @@ export default {
       commodity: {
         yunxiao: {
           bg: "miumiu-yunxiao.png",
-          banner: "2-1.png",
+          banner: "1-6.png",
+          banner1: "2-5.png",
           fullName: "缪缪霓裳云霄女士香水",
           name: "霓裳云霄",
           id: 0,
@@ -63,7 +64,8 @@ export default {
         },
         chonger: {
           bg: "miumiu-chonger.png",
-          banner: "2-3.png",
+          banner: "1-1.png",
+          banner1: "2-4.png",
           fullName: "缪缪霓裳宠儿女士香水",
           name: "霓裳宠儿",
           id: 1,
@@ -80,7 +82,8 @@ export default {
         },
         wantong: {
           bg: "miumiu-wantong.png",
-          banner: "1-4.png",
+          banner: "1-3.png",
+          banner1: "2-1.png",
           fullName: "缪缪霓裳玩童女士香水",
           name: "霓裳玩童",
           id: 2,
@@ -98,6 +101,8 @@ export default {
         },
         tianjiao: {
           bg: "miumiu-tianjiao.png",
+          banner: "2-3.png",
+          banner1: "1-4.png",
           fullName: "缪缪霓裳天骄女士香水",
           name: "霓裳天骄",
           id: 3,
@@ -143,9 +148,9 @@ export default {
   },
   methods: {
     nextPage() {
-      const key = this.getCommdity();
+      const commdity = this.getCommdity();
       if (this.selectedList.length === 5) {
-        this.$store.commit("SET_COMMODITY", this.commodity[key]);
+        this.$store.commit("SET_COMMODITY", commdity);
         this.$router.push("fragrance-result");
       } else {
         this.$toast("请您选择完成后再看结果~");
@@ -171,31 +176,36 @@ export default {
     },
     getCommdity() {
       const obk = {
-        0: "yunxiao",
+        0: "chonger",
         1: "yunxiao",
-        2: "chonger",
-        3: "chonger",
-        4: "wantong",
-        5: "wantong",
-        6: "tianjiao",
-        7: "tianjiao"
+        2: "wantong",
+        3: "tianjiao",
+        4: "tianjiao",
+        5: "yunxiao",
+        6: "chonger",
+        7: "wantong",
+        8: "wantong",
+        9: "tianjiao",
+        10: "tianjiao",
+        11: "chonger",
+        12: "yunxiao",
+        13: "wantong",
+        14: "chonger",
+        15: "yunxiao"
       };
       const arr = [...this.selectedList];
       const se = [];
       for (let i = 0; i < arr.length; i++) {
         se.push(obk[arr[i].id]);
       }
+
       const yunxiao = se.filter(v => v === "yunxiao").length;
       const chonger = se.filter(v => v === "chonger").length;
       const wantong = se.filter(v => v === "wantong").length;
       const tianjiao = se.filter(v => v === "tianjiao").length;
 
       const result = [yunxiao, chonger, wantong, tianjiao];
-
-      if (result.filter(v => v === 1).length === 4) {
-        const list = ["yunxiao", "chonger", "wantong", "tianjiao"];
-        return list[Math.floor(Math.random() * list.length)];
-      } else if (result.filter(v => v === 2).length === 2) {
+      if (result.filter(v => v === 2).length === 2) {
         const list = [];
         if (yunxiao === 2) {
           list.push("yunxiao");
@@ -209,10 +219,12 @@ export default {
         if (tianjiao === 2) {
           list.push("tianjiao");
         }
-        return list[Math.floor(Math.random() * list.length)];
+        const index = list[Math.floor(Math.random() * list.length)];
+        return this.commodity[index];
       } else {
         const list = ["yunxiao", "chonger", "wantong", "tianjiao"];
-        return list[this.arrayMaxIndex(result)];
+        const index = list[this.arrayMaxIndex(result)];
+        return this.commodity[index];
       }
     },
     arrayMaxIndex(arrs) {

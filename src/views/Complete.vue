@@ -4,6 +4,7 @@
       <img class="logo" src="../assets/image/logo.png" alt="" />
     </div>
     <div class="content">
+      <div class="bottom-bgimg" :style="{ backgroundImage: `url(${require(`../assets/image/choose-test/${commodity.banner1}`)})` }"></div>
       <div class="top-img">
         <div class="bg-img"><img :src="bgImg" alt="" /></div>
         <div class="center-box">
@@ -88,9 +89,21 @@ export default {
   }
   .content {
     position: relative;
-    top: -48vw;
+    top: -50vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .bottom-bgimg {
+      position: absolute;
+      width: 70vw;
+      height: 70vw;
+      margin: 0 auto;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
   }
   .top-img {
+    margin-top: 8vw;
     position: relative;
     display: flex;
     justify-content: center;
@@ -108,7 +121,7 @@ export default {
       .top {
         position: relative;
         .top-img {
-          top: 5vw;
+          top: 4vw;
           z-index: 999;
         }
       }
@@ -156,7 +169,7 @@ export default {
     }
   }
   .footer {
-    margin-top: 20px;
+    margin: 6vw 0;
     display: flex;
     justify-content: center;
     .btn {

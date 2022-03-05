@@ -9,7 +9,7 @@
           <img :src="bg" alt="" />
         </div>
         <div class="right">
-          <img src="" alt="">
+          <div class="p0" :style="{backgroundImage: `url(${require(`../assets/image/choose-test/${commodity.banner}`)})`}"></div>
           <div class="p1">
             <div class="a">{{ commodity.subText }}</div>
             <div class="b">{{ commodity.fullName }}</div>
@@ -64,13 +64,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import "../styles/mixin";
 .container {
   height: 100vh;
   padding: 0;
   background-color: #fff;
   .top-box {
     padding-top: 8vw;
-    height: 78vw;
+    height: 86vw;
     background-color: #ffede9;
     text-align: center;
     .logo {
@@ -80,7 +81,7 @@ export default {
   .content {
     padding: 6vw;
     position: relative;
-    top: -48vw;
+    top: -58vw;
     .content-top {
       display: flex;
     }
@@ -89,14 +90,21 @@ export default {
       min-width: 30vw;
       min-height: 82vw;
       img {
-        width: 30vw;
+        width: 34vw;
       }
     }
     .right {
       margin-left: 3vw;
       position: relative;
-      top: 30vw;
+
+      .p0 {
+        width: 50vw;
+        height: 50vw;
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
       .p1 {
+        margin-top: 4vw;
         .a {
           font-size: 3vw;
         }
