@@ -47,7 +47,7 @@ export default {
         yunxiao: {
           bg: "miumiu-yunxiao.png",
           banner: "1-6.png",
-          banner1: "2-5.png",
+          banner1: this.util().getPixelRatioImage("2-5.png"),
           fullName: "缪缪霓裳云霄女士香水",
           name: "霓裳云霄",
           id: 0,
@@ -294,6 +294,7 @@ export default {
   }
 
   .footer {
+    margin-top: 8vw;
     padding: 20px 0;
     display: flex;
     justify-content: center;

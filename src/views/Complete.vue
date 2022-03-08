@@ -4,7 +4,12 @@
       <img class="logo" src="../assets/image/logo.png" alt="" />
     </div>
     <div class="content">
-      <div class="bottom-bgimg" :style="{ backgroundImage: `url(${require(`../assets/image/choose-test/${commodity.banner1}`)})` }"></div>
+      <div
+        class="bottom-bgimg"
+        :style="{
+          backgroundImage: `url(${require(`../assets/image/choose-test/${commodity.banner1}`)})`
+        }"
+      ></div>
       <div class="top-img">
         <div class="bg-img"><img :src="bgImg" alt="" /></div>
         <div class="center-box">
@@ -30,10 +35,10 @@
         <span class="sub-title-icon"></span>
         {{ caseItem.bottom.name }}
       </div>
-      <div class="price">
-        <div class="total">组合价</div>
-        <div>￥{{ commodity.CNY + caseItem.top.CNY + caseItem.bottom.CNY }}</div>
-      </div>
+      <!--      <div class="price">-->
+      <!--        <div class="total">组合价</div>-->
+      <!--        <div>￥{{ commodity.CNY + caseItem.top.CNY + caseItem.bottom.CNY }}</div>-->
+      <!--      </div>-->
       <div class="footer">
         <van-button class="btn" round type="primary" @click="shopping()">
           <div>加入购物车 <span class="shopping-cart-icon"></span></div>
@@ -169,7 +174,7 @@ export default {
     }
   }
   .footer {
-    margin: 6vw 0;
+    margin: 12vw 0 6vw 0;
     display: flex;
     justify-content: center;
     .btn {

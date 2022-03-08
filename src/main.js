@@ -11,6 +11,9 @@ Vue.mixin(mixin);
 // 引入全部样式
 import "vant/lib/index.less";
 
+import { imgsPreloader } from "./utils/imgPreloader.js";
+import imgPreloaderList from "./static/data/imgPreloadList.js";
+
 Vue.config.productionTip = false;
 
 // router.beforeEach((to, from, next) => {
@@ -39,10 +42,11 @@ window.document.body.addEventListener("focusout", () => {
   window.scrollTo(0, 0);
 });
 
-
-
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount("#app");
+(async () => {
+  await imgsPreloader(imgPreloaderList);
+  new Vue({
+    router,
+    store,
+    render: h => h(App)
+  }).$mount("#app");
+})();
