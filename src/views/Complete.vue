@@ -70,10 +70,16 @@ export default {
       this.$router.go(-1);
     },
     shopping() {
-      window.wx.miniProgram.navigateTo("/pages/cart/home");
+      const productIds = [this.caseItem.top.code, this.caseItem.bottom.code, this.commodity.code];
+      window.wx.miniProgram.navigateTo(
+        `/packages/openMiniProgram/index?productIds=${productIds}&handle=shopCar`
+      );
     },
     buy() {
-      window.wx.miniProgram.navigateTo("/packages/plus/purchase/home?shopId=128");
+      const productIds = [this.caseItem.top.code, this.caseItem.bottom.code, this.commodity.code];
+      window.wx.miniProgram.navigateTo(
+        `/packages/openMiniProgram/index?productIds=${productIds}&handle=buy`
+      );
     }
   }
 };
