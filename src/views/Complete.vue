@@ -71,15 +71,15 @@ export default {
     },
     shopping() {
       const productIds = [this.caseItem.top.code, this.caseItem.bottom.code, this.commodity.code];
-      window.wx.miniProgram.navigateTo(
-        `/packages/openMiniProgram/index?productIds=${productIds}&handle=shopCar`
-      );
+      window.wx.miniProgram.navigateTo({
+        url: `/packages/openMiniProgram/index?productIds=${productIds}&handle=shopCar`
+      });
     },
     buy() {
       const productIds = [this.caseItem.top.code, this.caseItem.bottom.code, this.commodity.code];
-      window.wx.miniProgram.navigateTo(
-        `/packages/openMiniProgram/index?productIds=${productIds}&handle=buy`
-      );
+      window.wx.miniProgram.navigateTo({
+        url: `/packages/openMiniProgram/index?productIds=${productIds}&handle=buy`
+      });
     }
   }
 };
